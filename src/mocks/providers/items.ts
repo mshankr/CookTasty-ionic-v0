@@ -18,7 +18,19 @@ export class Items {
       {
         "name": "Burt Bear",
         "profilePic": "assets/img/speakers/bear.jpg",
-        "about": "Burt is a Bear."
+        "about": "Burt is a Bear.",
+        "steps": [
+          {
+            "name": "Step 1",
+            "details": "Cut the onions into thin slices.",
+            "src": ""
+          },
+          {
+            "name": "Step 2",
+            "details": "Cut the onions into thin slices.",
+            "src": ""
+          }
+        ]
       },
       {
         "name": "Charlie Cheetah",
