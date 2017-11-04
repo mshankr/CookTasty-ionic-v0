@@ -21,11 +21,13 @@ export class Items {
         "about": "Burt is a Bear.",
         "steps": [
           {
+            "count": 1,
             "name": "Step 1",
             "details": "Cut the onions into thin slices.",
             "src": ""
           },
           {
+            "count": 2,
             "name": "Step 2",
             "details": "Cut the onions into thin slices.",
             "src": ""
