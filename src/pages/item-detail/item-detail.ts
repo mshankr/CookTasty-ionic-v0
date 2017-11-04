@@ -19,9 +19,10 @@ export class ItemDetailPage {
   /**
    * Navigate to the detail page for this item.
    */
-  openItem(item: Item) {
+  openStep(item: Item, count: number) {
     this.navCtrl.push('StepDetailPage', {
-      item: item
+      item: item,
+      count: count
     });
   }
 }

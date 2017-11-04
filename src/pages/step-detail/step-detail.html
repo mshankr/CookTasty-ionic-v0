@@ -12,7 +12,8 @@
   </div>
 
   <div class="item-detail" padding>
-    <h2>{{item.steps[0].name}}</h2>
-    <p>{{item.steps[0].details}}</p>
+    <h2>{{item.steps[count].name}}</h2>
+    <p>{{item.steps[count].details}}</p>
+    <button ion-button (click)="incrementCount(); openStep(item, count)">Start cooking</button>
   </div>
 </ion-content>

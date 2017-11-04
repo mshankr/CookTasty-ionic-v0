@@ -7,10 +7,36 @@ export class Items {
   items: Item[] = [];
 
   defaultItem: any = {
-    "name": "Burt Bear",
-    "profilePic": "assets/img/speakers/bear.jpg",
-    "about": "Burt is a Bear.",
-  };
+      "name": "Burt Bear",
+      "profilePic": "assets/img/speakers/bear.jpg",
+      "about": "Burt is a Bear.",
+      "steps": [
+        {
+          "name": "Step 1",
+          "details": "Cut the onions into thin slices.",
+          "time": "0",
+          "src": ""
+        },
+        {
+          "name": "Step 2",
+          "details": "Chop the garlic.",
+          "time": "0",
+          "src": ""
+        },
+        {
+          "name": "Step 3",
+          "details": "Fry the chicken for 10 min.",
+          "time": "10",
+          "src": ""
+        },
+        {
+          "name": "Step 3",
+          "details": "Bake the chicken for 50 min.",
+          "time": "50",
+          "src": ""
+        }
+      ]
+    };
 
 
   constructor() {
@@ -21,15 +47,27 @@ export class Items {
         "about": "Burt is a Bear.",
         "steps": [
           {
-            "count": 1,
             "name": "Step 1",
             "details": "Cut the onions into thin slices.",
+            "time": "0",
             "src": ""
           },
           {
-            "count": 2,
             "name": "Step 2",
-            "details": "Cut the onions into thin slices.",
+            "details": "Chop the garlic.",
+            "time": "0",
+            "src": ""
+          },
+          {
+            "name": "Step 3",
+            "details": "Fry the chicken for 10 min.",
+            "time": "10",
+            "src": ""
+          },
+          {
+            "name": "Step 4",
+            "details": "Bake the chicken for 50 min.",
+            "time": "50",
             "src": ""
           }
         ]
