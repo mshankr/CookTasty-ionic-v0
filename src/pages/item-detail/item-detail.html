@@ -7,13 +7,24 @@
 </ion-header>
 
 
-<ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
-  </div>
-
-  <div class="item-detail" padding>
-    <h2>{{item.name}}</h2>
-    <p>{{item.about}}</p>
-    <button ion-button (click)="openStep(item, 0)">Start cooking</button>
-  </div>
+<ion-content no-bounce>
+  <!-- Real floating action button, fixed. It will not scroll with the content -->
+  <ion-fab top right edge>
+    <button ion-fab><ion-icon name="timer"></ion-icon></button>
+  </ion-fab>
+  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
+    <ion-slide *ngFor="let slide of slides">
+      <img [src]="slide.image" class="slide-image" />
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />
+      <h2 class="slide-title">Finished Cooking!</h2>
+      <button ion-button icon-end large clear (click)="startApp()">
+        Back to Recipes
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

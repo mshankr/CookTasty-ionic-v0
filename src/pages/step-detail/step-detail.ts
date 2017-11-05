@@ -31,6 +31,7 @@ export class StepDetailPage {
    * Navigate to the detail page for this item.
    */
   openStep(item: Item, count: number) {
+    debugger;
       this.navCtrl.push('StepDetailPage', {
         item: item,
         count: count
