@@ -5,8 +5,8 @@
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
   <ion-toolbar>Recommendations:
-      <span *ngFor="let item of currentItems" nowrap>
-        {{item.name}}
+      <span *ngFor="let item of currentItems | slice:0:3; let i = index" nowrap>
+        <a (click)="openItem(item)">{{item.name}}</a> |
       </span>
   </ion-toolbar>
   <ion-list>
