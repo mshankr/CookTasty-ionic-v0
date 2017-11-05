@@ -47,7 +47,7 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
-    this.navCtrl.push('NasiLemakBurgerPage', {
+    this.navCtrl.push('SlicedFishSoupPage', {
       item: item
     });
   }

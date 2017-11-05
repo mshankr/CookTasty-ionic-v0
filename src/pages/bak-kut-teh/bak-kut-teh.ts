@@ -5,31 +5,33 @@ import { Items } from '../../providers/providers';
 import {MainPage} from "../pages";
 import { Observable } from 'rxjs/Rx';
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-
-export interface Times {
-  duration: number;
-}
+import {Subject} from "rxjs/Subject";
 
 @IonicPage({
-  name: 'NasiLemakBurgerPage'
+  name: 'BakKutTehPage'
 })
 
 @Component({
   selector: 'page-item-detail',
-  templateUrl: 'nasi-lemak-burger.html'
+  templateUrl: 'bak-kut-teh.html'
 })
 
-export class NasiLemakBurgerPage {
-  showSkip = true;
+export class BakKutTehPage {
   item: any;
   subscription;
   source;
-  times: number[];
   duration: number;
+  pauser;
+  pausable;
+  numWords;
+  words;
+  pause = 0;
 
   constructor(public navCtrl: NavController, navParams: NavParams, public menu: MenuController, items: Items) {
-    this.times = [10000, 2000];
     this.item = navParams.get('item') || items.defaultItem;
+
+    this.words = 'Row row row your boat gently down the stream merrily merrily merrily merrily life is but a dream'.split(' ')
+    this.numWords = this.words.length;
   }
 
   startApp() {
@@ -40,13 +42,11 @@ export class NasiLemakBurgerPage {
   }
 
 
-  onSlideChangeStart(slider) {
-    this.showSkip = !slider.isEnd();
-  }
-
 // to unsubscribe the function and stop the iterations
   stopTimer () {
-    this.subscription.pause;
+    this.pause=1;
+    // this.pauser = Observable.of(0);
+    // this.pausable = this.pauser.switchMap(paused => paused ? Observable.never() : this.source);
   }
 
   startTimer () {
@@ -58,42 +58,42 @@ export class NasiLemakBurgerPage {
   ionViewDidEnter() {
     // the root left menu should be disabled on the tutorial page
     this.menu.enable(false);
-    // this.subscription = Observable.timer(0, 1000, )
 
-/*    this.source = new BehaviorSubject(10000);
+    this.source = Observable
+      .interval(500) // emit a value every half second
+      .scan(x => x + 1) // just record the count (the function inside is just a predicate to tell it which values to count and which to ignore -- here we're just counting everything)
+      .map(count => count % this.numWords) // convert each count into a the correct index for our words array, resetting after it hits the end
+      .map(index => this.words[index]) // map to the word
 
-    this.subscription = this.source.subscribe(
-      v => console.log(v)
-    );*/
+// this.subscription = Observable
+//   .interval(3000)
+//   .switchMap(() => this.source);
 
-    /*this.subscription = Observable.from(this.times).subscribe(
-      a => console.log("timing: %s", a),
-      e => console.log('onError: %s', e),
-      () => console.log('onCompleted')
-    );*/
+  this.source.subscribe(word => this.duration = word);
 
-    /*(x=this.times[0].duration => {
-      x--;
-    });*/
-/*    this.subscription = Observable.interval(1000).subscribe(i => {
-      // the number 1000 is on miliseconds so every second is going to have an iteration of what is inside this code.
-      console.log(i);
-      i++;
-    });*/
+    this.pauser = Observable.of(this.pause);
+//
+// // All the magic is here
+    this.pausable = this.pauser.switchMap(paused => paused ? Observable.never() : this.source);
+//
+//     this.pausable.subscribe(x => console.log(x));
+//
+//     this.pauser.next(true);
 
+/*
     let duration = 10;
     this.subscription = Observable
       .timer(0, 1000)
       .map(i => duration - i)
-      .take(duration+1)
+      .take(duration)
       .subscribe(
         i => this.duration = i,
         e => console.log("timer error: %s", e),
-        () => console.log("timer done ")
+        () => console.log(0)
         );
-
-
+        */
   }
+
 
   ionViewWillLeave() {
     // enable the root left menu when leaving the tutorial page

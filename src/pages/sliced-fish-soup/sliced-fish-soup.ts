@@ -11,15 +11,15 @@ export interface Times {
 }
 
 @IonicPage({
-  name: 'NasiLemakBurgerPage'
+  name: 'SlicedFishSoupPage'
 })
 
 @Component({
   selector: 'page-item-detail',
-  templateUrl: 'nasi-lemak-burger.html'
+  templateUrl: 'sliced-fish-soup.html'
 })
 
-export class NasiLemakBurgerPage {
+export class SlicedFishSoupPage {
   showSkip = true;
   item: any;
   subscription;
@@ -28,7 +28,6 @@ export class NasiLemakBurgerPage {
   duration: number;
 
   constructor(public navCtrl: NavController, navParams: NavParams, public menu: MenuController, items: Items) {
-    this.times = [10000, 2000];
     this.item = navParams.get('item') || items.defaultItem;
   }
 
@@ -46,7 +45,7 @@ export class NasiLemakBurgerPage {
 
 // to unsubscribe the function and stop the iterations
   stopTimer () {
-    this.subscription.pause;
+    
   }
 
   startTimer () {
@@ -81,7 +80,19 @@ export class NasiLemakBurgerPage {
       i++;
     });*/
 
-    let duration = 10;
+let start = Observable.fromEvent(document.querySelector("#start"), 'click');
+let stop = Observable.fromEvent(document.querySelector("#stop"), 'click');
+
+let interval = Observable.timer(0, 1000);
+
+let pause = interval.takeUntil(stop);
+
+start
+  .switchMapTo(pause)
+  .scan((count => count+1), 0)
+  .subscribe(x => this.duration = x);
+
+    /*let duration = 10;
     this.subscription = Observable
       .timer(0, 1000)
       .map(i => duration - i)
@@ -90,7 +101,7 @@ export class NasiLemakBurgerPage {
         i => this.duration = i,
         e => console.log("timer error: %s", e),
         () => console.log("timer done ")
-        );
+        );*/
 
 
   }

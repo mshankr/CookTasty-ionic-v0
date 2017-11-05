@@ -80,14 +80,14 @@ export class Items {
         ]
       },
       {
-        "name": "Charlie Cheetah",
+        "name": "Nasi Lemak Burger",
         "profilePic": "assets/img/speakers/cheetah.jpg",
-        "about": "Charlie is a Cheetah."
+        "about": "Yummy & revolutionary!"
       },
       {
-        "name": "Donald Duck",
+        "name": "Bak Kut Teh",
         "profilePic": "assets/img/speakers/duck.jpg",
-        "about": "Donald is a Duck."
+        "about": "Steamy peppery goodness"
       },
       {
         "name": "Eva Eagle",
