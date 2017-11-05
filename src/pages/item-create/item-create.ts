@@ -1,10 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
-import {MainPage} from "../pages";
-import {Item} from "../../models/item";
-import {Items} from "../../mocks/providers/items";
 
 @IonicPage()
 @Component({
@@ -18,46 +15,23 @@ export class ItemCreatePage {
 
   item: any;
 
-  currentItems: Item[];
-
   form: FormGroup;
 
-  fb: FormBuilder;
-
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public items: Items, formBuilder: FormBuilder, public camera: Camera) {
-    this.currentItems = this.items.query();
-
-    this.form = this.fb.group({
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+    this.form = formBuilder.group({
       profilePic: [''],
       name: ['', Validators.required],
-      about: [''],
-      steps: this.fb.array([])
+      about: ['']
     });
-
-    this.addStep();
 
     // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
-
   }
 
   ionViewDidLoad() {
-  }
 
-  initStep() {
-    return this.fb.group({
-      name: [''],
-      details: ['']
-    })
-  }
-
-  addStep() {
-    const stepArray = <FormArray>this.form.controls['steps'];
-    const newStep = this.initStep();
-
-    stepArray.push(newStep);
   }
 
   getPicture() {
@@ -95,7 +69,7 @@ export class ItemCreatePage {
    * The user cancelled, so we dismiss without sending data back.
    */
   cancel() {
-    // this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss();
   }
 
   /**
@@ -103,13 +77,7 @@ export class ItemCreatePage {
    * back to the presenter.
    */
   done() {
-
     if (!this.form.valid) { return; }
-    // this.viewCtrl.dismiss(this.form.value);
-    this.items.add(this.form.value);
-    this.navCtrl.push(MainPage);
-  }
-
-  patchForm() {
+    this.viewCtrl.dismiss(this.form.value);
   }
 }
