@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import {IonicPage, ModalController, NavController} from 'ionic-angular';
 
 import { Tab1Root } from '../pages';
 import { Tab2Root } from '../pages';
 import { Tab3Root } from '../pages';
 import { Tab4Root } from '../pages';
 import { Tab5Root } from '../pages';
+
+import {Item} from "../../models/item";
+import { Items } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -26,6 +29,23 @@ export class TabsPage {
   tab4Title = " ";
   tab5Title = " ";
 
-  constructor(public navCtrl: NavController) {
+  currentItems: Item[];
+
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
+    this.currentItems = this.items.query();
+  }
+
+  /**
+   * Prompt the user to add a new item. This shows our ItemCreatePage in a
+   * modal and then adds the new item to our data source if the user created one.
+   */
+  addItem() {
+    let addModal = this.modalCtrl.create('ItemCreatePage');
+    addModal.onDidDismiss(item => {
+      if (item) {
+        this.items.add(item);
+      }
+    });
+    addModal.present();
   }
 }
