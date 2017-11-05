@@ -27,9 +27,6 @@ export class ItemCreatePage {
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public items: Items, formBuilder: FormBuilder, public camera: Camera) {
     this.currentItems = this.items.query();
 
-  }
-
-  ionViewDidLoad() {
     this.form = this.fb.group({
       profilePic: [''],
       name: ['', Validators.required],
@@ -43,6 +40,10 @@ export class ItemCreatePage {
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
+
+  }
+
+  ionViewDidLoad() {
   }
 
   initStep() {

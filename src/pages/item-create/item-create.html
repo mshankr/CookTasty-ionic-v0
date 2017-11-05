@@ -42,13 +42,17 @@
       <ion-item>
         <ion-input type="text" placeholder="Difficulty" formControlName="about"></ion-input>
       </ion-item>
-      <div formArrayName="steps">
+      <div formGroupName="steps">
         <div *ngFor="let step of form.controls.steps.controls; let i = index">
-          <ion-item>
-            <ion-input type="text" placeholder="Step "+{{i + 1}}></ion-input>
-          </ion-item>
+          <div [formGroupName]="i">
+            <step [group]="form.controls.steps.controls[i]"></step>
+            <!--<ion-item [group]="form.controls.steps.controls[i]">
+              <ion-input type="text" placeholder="Step "+{{i + 1}}></ion-input>
+            </ion-item>-->
+          </div>
         </div>
       </div>
+      <button ion-button (click)="addStep()">Add step</button>
     </ion-list>
   </form>
 
