@@ -22,6 +22,21 @@ export class ListMasterPage {
   ionViewDidLoad() {
   }
 
+
+  /**
+   * Perform a service for the proper items.
+   */
+  getItems(ev) {
+    let val = ev.target.value;
+    if (!val || !val.trim()) {
+      this.currentItems = this.items.query();
+      return;
+    }
+    this.currentItems = this.items.query({
+      name: val
+    });
+  }
+
   /**
    * Prompt the user to add a new item. This shows our ItemCreatePage in a
    * modal and then adds the new item to our data source if the user created one.
@@ -47,7 +62,7 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
-    this.navCtrl.push('SlicedFishSoupPage', {
+    this.navCtrl.push('ItemDetailPage', {
       item: item
     });
   }

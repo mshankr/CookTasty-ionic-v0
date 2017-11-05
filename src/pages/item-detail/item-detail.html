@@ -8,15 +8,41 @@
 
 
 <ion-content no-bounce>
-  <!-- Real floating action button, fixed. It will not scroll with the content -->
-  <ion-fab top right edge>
-    <button ion-fab><ion-icon name="timer"></ion-icon></button>
-  </ion-fab>
   <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
     <ion-slide *ngFor="let slide of item.steps">
       <img [src]="slide.image" class="slide-image" />
-      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <h2 class="slide-title" [innerHTML]="slide.name"></h2>
       <p [innerHTML]="slide.details"></p>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-2.png" class="slide-image" />
+      <h1 ngBind="minutes seconds">{{minutes}}:{{seconds}}</h1>
+      <h2 class="slide-title">Step 3</h2>
+      <p>Fry the chicken for 10 min.</p>
+      <button id="start1" ion-button icon-end large clear>
+        Start
+      </button>
+      <button id="stop1" ion-button icon-end large clear>
+        Stop
+      </button>
+      <button id="reset1" ion-button icon-end large clear>
+        Reset
+      </button>
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/img/ica-slidebox-img-1.png" class="slide-image" />
+      <h1 ngBind="minutes2 seconds2">{{minutes2}}:{{seconds2}}</h1>
+      <h2 class="slide-title">Step 4</h2>
+      <p>Bake the chicken for 50 min.</p>
+      <button id="start2" ion-button icon-end large clear>
+        Start
+      </button>
+      <button id="stop2" ion-button icon-end large clear>
+        Stop
+      </button>
+      <button id="reset2" ion-button icon-end large clear>
+        Reset
+      </button>
     </ion-slide>
     <ion-slide>
       <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />

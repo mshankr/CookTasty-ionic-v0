@@ -58,7 +58,7 @@ export class Items {
             "time": "20",
             "image": 'assets/img/ica-slidebox-img-2.png'
           },
-          {
+          /*{
             "name": "Step 3",
             "details": "Fry the chicken for 10 min.",
             "time": "10",
@@ -76,38 +76,122 @@ export class Items {
             "details": "Bake the chicken for 50 min.",
             "time": "50",
             "image": 'assets/img/ica-slidebox-img-4.png'
-          }
+          }*/
         ]
       },
       {
         "name": "Nasi Lemak Burger",
         "profilePic": "assets/img/speakers/cheetah.jpg",
-        "about": "Yummy & revolutionary!"
+        "about": "Yummy & revolutionary!",
+        "steps": [
+          {
+            "name": "Step 1",
+            "details": "Cut the onions into thin slices.",
+            "time": "100",
+            "image": 'assets/img/ica-slidebox-img-1.png'
+          },
+          {
+            "name": "Step 2",
+            "details": "Chop the garlic.",
+            "time": "20",
+            "image": 'assets/img/ica-slidebox-img-2.png'
+          }
+          ]
       },
       {
         "name": "Bak Kut Teh",
         "profilePic": "assets/img/speakers/duck.jpg",
-        "about": "Steamy peppery goodness"
+        "about": "Steamy peppery goodness",
+        "steps": [
+          {
+            "name": "Step 1",
+            "details": "Debone the pork.",
+            "time": "100",
+            "image": 'assets/img/ica-slidebox-img-1.png'
+          },
+          {
+            "name": "Step 2",
+            "details": "Mix the chilli padi, garlic, onions and spices together.",
+            "time": "20",
+            "image": 'assets/img/ica-slidebox-img-2.png'
+          }
+        ]
       },
       {
-        "name": "Eva Eagle",
+        "name": "Sliced Fish Soup",
         "profilePic": "assets/img/speakers/eagle.jpg",
-        "about": "Eva is an Eagle."
+        "about": "Intermediate",
+        "steps": [
+          {
+            "name": "Step 1",
+            "details": "Scale the fish and remove innards.",
+            "time": "100",
+            "image": 'assets/img/ica-slidebox-img-1.png'
+          },
+          {
+            "name": "Step 2",
+            "details": "Season the fish in soy sauce.",
+            "time": "20",
+            "image": 'assets/img/ica-slidebox-img-2.png'
+          }
+        ]
       },
       {
         "name": "Ellie Elephant",
         "profilePic": "assets/img/speakers/elephant.jpg",
-        "about": "Ellie is an Elephant."
+        "about": "Ellie is an Elephant.",
+        "steps": [
+          {
+            "name": "Step 1",
+            "details": "Cut the onions into thin slices.",
+            "time": "100",
+            "image": 'assets/img/ica-slidebox-img-1.png'
+          },
+          {
+            "name": "Step 2",
+            "details": "Chop the garlic.",
+            "time": "20",
+            "image": 'assets/img/ica-slidebox-img-2.png'
+          }
+        ]
       },
       {
-        "name": "Molly Mouse",
+        "name": "Ellie Essie",
         "profilePic": "assets/img/speakers/mouse.jpg",
-        "about": "Molly is a Mouse."
+        "about": "Molly is a Mouse.",
+        "steps": [
+          {
+            "name": "Step 1",
+            "details": "Cut the onions into thin slices.",
+            "time": "100",
+            "image": 'assets/img/ica-slidebox-img-1.png'
+          },
+          {
+            "name": "Step 2",
+            "details": "Chop the garlic.",
+            "time": "20",
+            "image": 'assets/img/ica-slidebox-img-2.png'
+          }
+        ]
       },
       {
         "name": "Paul Puppy",
         "profilePic": "assets/img/speakers/puppy.jpg",
-        "about": "Paul is a Puppy."
+        "about": "Paul is a Puppy.",
+        "steps": [
+          {
+            "name": "Step 1",
+            "details": "Cut the onions into thin slices.",
+            "time": "100",
+            "image": 'assets/img/ica-slidebox-img-1.png'
+          },
+          {
+            "name": "Step 2",
+            "details": "Chop the garlic.",
+            "time": "20",
+            "image": 'assets/img/ica-slidebox-img-2.png'
+          }
+        ]
       }
     ];
 
