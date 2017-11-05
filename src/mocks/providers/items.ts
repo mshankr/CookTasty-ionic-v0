@@ -7,20 +7,20 @@ export class Items {
   items: Item[] = [];
 
   defaultItem: any = {
-      "name": "Burt Bear",
+      "name": "Chicken Nuggets",
       "profilePic": "assets/img/speakers/bear.jpg",
-      "about": "Burt is a Bear.",
+      "about": "Intermediate",
       "steps": [
         {
           "name": "Step 1",
           "details": "Cut the onions into thin slices.",
-          "time": "0",
+          "time": "100",
           "src": ""
         },
         {
           "name": "Step 2",
           "details": "Chop the garlic.",
-          "time": "0",
+          "time": "20",
           "src": ""
         },
         {
@@ -42,33 +42,40 @@ export class Items {
   constructor() {
     let items = [
       {
-        "name": "Burt Bear",
+        "name": "Chicken Nuggets",
         "profilePic": "assets/img/speakers/bear.jpg",
-        "about": "Burt is a Bear.",
+        "about": "Intermediate",
         "steps": [
           {
             "name": "Step 1",
             "details": "Cut the onions into thin slices.",
-            "time": "0",
-            "src": ""
+            "time": "100",
+            "image": 'assets/img/ica-slidebox-img-1.png'
           },
           {
             "name": "Step 2",
             "details": "Chop the garlic.",
-            "time": "0",
-            "src": ""
+            "time": "20",
+            "image": 'assets/img/ica-slidebox-img-2.png'
           },
           {
             "name": "Step 3",
             "details": "Fry the chicken for 10 min.",
             "time": "10",
-            "src": ""
+            "src": "",
+            "image": 'assets/img/ica-slidebox-img-3.png'
+          },
+          {
+            "name": "Step 3",
+            "details": "Bake the chicken for 50 min.",
+            "time": "50",
+            "image": 'assets/img/ica-slidebox-img-2.png'
           },
           {
             "name": "Step 4",
             "details": "Bake the chicken for 50 min.",
             "time": "50",
-            "src": ""
+            "image": 'assets/img/ica-slidebox-img-4.png'
           }
         ]
       },

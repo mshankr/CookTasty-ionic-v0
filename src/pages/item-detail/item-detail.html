@@ -13,10 +13,10 @@
     <button ion-fab><ion-icon name="timer"></ion-icon></button>
   </ion-fab>
   <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
-    <ion-slide *ngFor="let slide of slides">
+    <ion-slide *ngFor="let slide of item.steps">
       <img [src]="slide.image" class="slide-image" />
       <h2 class="slide-title" [innerHTML]="slide.title"></h2>
-      <p [innerHTML]="slide.description"></p>
+      <p [innerHTML]="slide.details"></p>
     </ion-slide>
     <ion-slide>
       <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />

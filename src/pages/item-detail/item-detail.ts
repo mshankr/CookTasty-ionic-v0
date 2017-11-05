@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams, Platform} from 'ionic-angular';
-import { SuperTabsModule } from 'ionic2-super-tabs';
 
 import { Items } from '../../providers/providers';
-import {Item} from "../../models/item";
-import {TranslateService} from "@ngx-translate/core";
 import {MainPage} from "../pages";
 
 export interface Slide {
