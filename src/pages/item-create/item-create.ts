@@ -2,6 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
+import {Items} from "../../mocks/providers/items";
+import {Item} from "../../models/item";
+import {MainPage} from "../pages";
 
 @IonicPage()
 @Component({
@@ -15,9 +18,14 @@ export class ItemCreatePage {
 
   item: any;
 
+  currentItems: Item[];
+
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  constructor(public navCtrl: NavController, public items: Items, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+
+    this.currentItems = this.items.query();
+
     this.form = formBuilder.group({
       profilePic: [''],
       name: ['', Validators.required],
@@ -78,6 +86,7 @@ export class ItemCreatePage {
    */
   done() {
     if (!this.form.valid) { return; }
-    this.viewCtrl.dismiss(this.form.value);
+    this.items.add(this.form.value);
+    this.navCtrl.push(MainPage);
   }
 }
