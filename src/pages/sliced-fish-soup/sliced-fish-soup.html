@@ -9,14 +9,17 @@
 
 <ion-content no-bounce>
 
-  <h1 ngBind="duration">{{duration}}</h1>
+  <h1 ngBind="duration sec">{{duration}} : {{sec}}</h1>
+  <button id="start" ion-button icon-end large clear (click)="startTimer()">
+    Start the timer
+    <ion-icon name="arrow-forward"></ion-icon>
+  </button>
   <button id="stop" ion-button icon-end large clear (click)="stopTimer()">
     Stop the timer
     <ion-icon name="arrow-forward"></ion-icon>
   </button>
-
-  <button id="start" ion-button icon-end large clear (click)="startTimer()">
-    Start the timer
+  <button id="reset" ion-button icon-end large clear>
+    Reset timer
     <ion-icon name="arrow-forward"></ion-icon>
   </button>
 </ion-content>

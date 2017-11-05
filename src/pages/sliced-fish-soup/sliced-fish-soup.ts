@@ -26,6 +26,7 @@ export class SlicedFishSoupPage {
   source;
   times: number[];
   duration: number;
+  sec: number;
 
   constructor(public navCtrl: NavController, navParams: NavParams, public menu: MenuController, items: Items) {
     this.item = navParams.get('item') || items.defaultItem;
@@ -45,7 +46,7 @@ export class SlicedFishSoupPage {
 
 // to unsubscribe the function and stop the iterations
   stopTimer () {
-    
+
   }
 
   startTimer () {
@@ -82,15 +83,39 @@ export class SlicedFishSoupPage {
 
 let start = Observable.fromEvent(document.querySelector("#start"), 'click');
 let stop = Observable.fromEvent(document.querySelector("#stop"), 'click');
+let reset = Observable.fromEvent(document.querySelector("#reset"), 'click');
 
-let interval = Observable.timer(0, 1000);
+let stopOrReset = Observable.merge(
+  stop,
+  reset
+);
 
-let pause = interval.takeUntil(stop);
+let toTime = time => ({
+  seconds: Math.floor(time % 60),
+  minutes: Math.floor(time / 60)
+})
+
+let duration = 180;
+let countdown = count => count-1;
+let res = count => duration;
+
+
+let interval = Observable
+  .timer(0, 1000)
+  .map(i => duration - i);
+
+let pause = interval.takeUntil(stopOrReset);
+
+let contOrReset = Observable.merge(
+  pause.mapTo(countdown),
+  reset.mapTo(res)
+);
 
 start
-  .switchMapTo(pause)
-  .scan((count => count+1), 0)
-  .subscribe(x => this.duration = x);
+  .switchMapTo(contOrReset)
+  .scan(((count, currFunc) => currFunc(count)), duration)
+  .map(toTime)
+  .subscribe(x => (this.duration = x.minutes, this.sec = x.seconds));
 
     /*let duration = 10;
     this.subscription = Observable
