@@ -4,6 +4,11 @@
 
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)" placeholder="{{ 'SEARCH_PLACEHOLDER' | translate }}"></ion-searchbar>
+  <ion-toolbar>Recommendations:
+      <span *ngFor="let item of currentItems" nowrap>
+        {{item.name}}
+      </span>
+  </ion-toolbar>
   <ion-list>
     <ion-item-sliding *ngFor="let item of currentItems">
       <button ion-item (click)="openItem(item)">
