@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
 import {MainPage} from "../pages";
@@ -22,14 +22,22 @@ export class ItemCreatePage {
 
   form: FormGroup;
 
+  fb: FormBuilder;
+
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public items: Items, formBuilder: FormBuilder, public camera: Camera) {
     this.currentItems = this.items.query();
 
-    this.form = formBuilder.group({
+  }
+
+  ionViewDidLoad() {
+    this.form = this.fb.group({
       profilePic: [''],
       name: ['', Validators.required],
-      about: ['']
+      about: [''],
+      steps: this.fb.array([])
     });
+
+    this.addStep();
 
     // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
@@ -37,8 +45,18 @@ export class ItemCreatePage {
     });
   }
 
-  ionViewDidLoad() {
+  initStep() {
+    return this.fb.group({
+      name: [''],
+      details: ['']
+    })
+  }
 
+  addStep() {
+    const stepArray = <FormArray>this.form.controls['steps'];
+    const newStep = this.initStep();
+
+    stepArray.push(newStep);
   }
 
   getPicture() {
@@ -76,7 +94,7 @@ export class ItemCreatePage {
    * The user cancelled, so we dismiss without sending data back.
    */
   cancel() {
-    this.viewCtrl.dismiss();
+    // this.viewCtrl.dismiss();
   }
 
   /**
@@ -84,10 +102,13 @@ export class ItemCreatePage {
    * back to the presenter.
    */
   done() {
+
     if (!this.form.valid) { return; }
     // this.viewCtrl.dismiss(this.form.value);
     this.items.add(this.form.value);
     this.navCtrl.push(MainPage);
   }
 
+  patchForm() {
+  }
 }

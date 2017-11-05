@@ -37,11 +37,22 @@
     </div>
     <ion-list>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_NAME_PLACEHOLDER' | translate }}" formControlName="name"></ion-input>
+        <ion-input type="text" placeholder="Recipe Title" formControlName="name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_ABOUT_PLACEHOLDER' | translate }}" formControlName="about"></ion-input>
+        <ion-input type="text" placeholder="Difficulty" formControlName="about"></ion-input>
       </ion-item>
+      <div formArrayName="steps">
+        <div *ngFor="let step of form.controls.steps.controls; let i = index">
+          <ion-item>
+            <ion-input type="text" placeholder="Step "+{{i + 1}}></ion-input>
+          </ion-item>
+        </div>
+      </div>
     </ion-list>
   </form>
+
+  <button ion-button (click)="done()">Done</button>
+
+  <p ngBind="form">{{form.value | json}}</p>
 </ion-content>
